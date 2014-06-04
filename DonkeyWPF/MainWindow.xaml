@@ -1,0 +1,24 @@
+﻿<Window x:Class="DonkeyWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="460" Width="325">
+    <Grid FocusManager.FocusedElement="{Binding ElementName=SearchText}">
+        <StackPanel>
+            <StackPanel Margin="10,5,10,5" Orientation="Vertical">
+                <Label Margin="10,5,15,0" BorderBrush="DarkGray">Protocol:</Label>
+                <ComboBox IsEnabled="{Binding IsDisconnected}" ItemsSource="{Binding ProtocolNames}" SelectedItem="{Binding SelectedProtocol}" Margin="15,5,8,5" Height="30"></ComboBox>
+            </StackPanel>
+            <StackPanel Margin="10,0,10,5">
+                <Label Margin="10,5,15,0">Servers:</Label>
+                <TextBox  IsEnabled="{Binding IsDisconnected}" Margin="15,5,10,0" Height="30" x:Name="SearchBox"></TextBox>
+                <ListBox IsEnabled="{Binding IsDisconnected}" ItemsSource="{Binding Servers}" 
+                DisplayMemberPath="Name" SelectedItem="{Binding SelectedServer}" SelectionChanged="Selector_OnSelectionChanged" Margin="15,10,0,10" HorizontalAlignment="Left" Height="200" Width="270"/>
+            </StackPanel>
+            <DockPanel Margin="20,5,20,5" Height="30">
+                <Label>Current State:</Label>
+                <Label Content="{Binding StatusText}"></Label>
+                <Button Content="{Binding BtnCaption}" IsEnabled="{Binding IsDisconneted}" HorizontalAlignment="Right" Width="100" Click="ButtonBase_OnClick"></Button>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>
